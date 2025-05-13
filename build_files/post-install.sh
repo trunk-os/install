@@ -3,9 +3,9 @@
 set -ouex pipefail
 
 # Enable getty on tty1 for image with no Display Manager
-if [[ "$IMAGE_NAME" == "base" ]]; then
+#if [[ "$IMAGE_NAME" == "base" ]]; then
     systemctl enable getty@tty1
-fi
+#fi
 
 # Workaround: Rename just's CN readme to README.zh-cn.md
 mv '/usr/share/doc/just/README.中文.md' '/usr/share/doc/just/README.zh-cn.md'
@@ -31,6 +31,10 @@ sed -Ei "s/secure_path = (.*)/secure_path = \1:\/home\/linuxbrew\/.linuxbrew\/bi
 # Remove coprs
 dnf5 -y copr remove ublue-os/staging
 dnf5 -y copr remove ublue-os/packages
+<<<<<<< HEAD
+=======
+#dnf5 -y copr remove kylegospo/oversteer
+>>>>>>> 4f9a014 (patches to support trunk os)
 
 # Disable Negativo17 Fedora Multimedia
 # This needs to be a whole organiztion change
@@ -52,5 +56,10 @@ chmod -R 1777 /var/tmp
 # Check to make sure important packages are present
 /ctx/check-build.sh
 
-# ostree checks
+dnf5 clean all
+rm -rf /var/cache/libdnf5
+rm -f /var/log/dnf5.log
+
+# bootc/ostree checks
+bootc container lint
 ostree container commit
