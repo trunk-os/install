@@ -4,7 +4,7 @@ IMAGE ?= base
 CONTAINER_IMAGE ?= localhost/base-main:latest
 RAM ?= 8192
 CPUS ?= 8
-IMAGE_SIZE ?= 50G
+IMAGE_SIZE ?= 10G
 
 image: build-container generate-image
 
