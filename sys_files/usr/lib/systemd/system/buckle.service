@@ -15,7 +15,7 @@ Before=umount.target
 Type=exec
 ExecStartPre=-mkdir -p /trunk/socket
 ExecStartPre=-/usr/bin/podman rm -f buckle
-ExecStart=/usr/bin/podman run --pull=always --privileged --name buckle --device /dev/zfs --net host --pid host --security-opt label=disable -v /trunk:/trunk:shared quay.io/trunk-os/buckle:latest
+ExecStart=/usr/bin/podman run --pull=always -it --privileged --name buckle --security-opt label=disable --net host --device /dev/zfs --pid host -v /etc/systemd:/etc/systemd -v /trunk:/trunk:shared -v /var/run/dbus:/var/run/dbus -v /var/log/journal:/var/log/journal:ro -v /var/log:/var/log:ro -v /run/log:/run/log:ro -v /run/systemd:/run/systemd:ro quay.io/trunk-os/buckle:latest
 Restart=always
 
 [Install]

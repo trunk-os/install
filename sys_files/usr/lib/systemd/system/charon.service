@@ -1,0 +1,23 @@
+# vim: ft=systemd
+[Unit]
+Description=Charon is a package manager
+DefaultDependencies=yes
+After=zfs-import.target
+After=local-fs.target
+After=make-zfs.service
+After=buckle.service
+After=network-online.target
+ConditionPathIsDirectory=/sys/module/zfs
+
+Conflicts=umount.target
+Before=umount.target
+
+[Service]
+Type=exec
+ExecStartPre=-/usr/bin/podman rm -f charon
+ExecStart=/usr/bin/podman run --pull=always -it --privileged --name charon --security-opt label=disable --net bridge --pid host --volumes-from buckle -v /etc/systemd:/etc/systemd:shared -v /trunk:/trunk:shared quay.io/trunk-os/charon:latest
+Restart=always
+
+[Install]
+WantedBy=default.target
+

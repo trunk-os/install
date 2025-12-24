@@ -2,6 +2,7 @@
   "all": {
     "include": {
       "all": [
+        "libcurl",
         "alsa-firmware",
         "apr",
         "apr-util",
@@ -26,8 +27,13 @@
         "make",
         "git",
         "podman",
+        "runc",
         "fuse-overlayfs",
-        "android-udev-rules"
+        "systemd-devel",
+        "protobuf",
+        "protobuf-devel",
+        "protobuf-compiler",
+        "openssl-devel"
       ]
     },
     "exclude": {

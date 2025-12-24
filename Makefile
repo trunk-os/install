@@ -1,10 +1,11 @@
 IMAGE_FILE = disk.raw
 QCOW2_FILE = disk.qcow2
+VDI_FILE = disk.vdi
 IMAGE ?= base
 CONTAINER_IMAGE ?= localhost/base-main:latest
 RAM ?= 8192
 CPUS ?= 8
-IMAGE_SIZE ?= 10G
+IMAGE_SIZE ?= 100G
 
 image: build-container generate-image
 
@@ -131,7 +132,8 @@ generate-image: clean
 				--filesystem ext4 \
 				--generic-image \
 				--via-loopback
-	qemu-img convert -f raw -O qcow2 $(IMAGE_FILE) $(QCOW2_FILE)
+	qemu-img convert -f raw -O qcow2 "$(IMAGE_FILE)" "$(QCOW2_FILE)"
+	qemu-img convert -f qcow2 -O vdi "$(QCOW2_FILE)" "$(VDI_FILE)"
 
 .PHONY: generate-image build-container \
 	raidz-images mirror-images single-image \

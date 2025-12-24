@@ -31,10 +31,7 @@ sed -Ei "s/secure_path = (.*)/secure_path = \1:\/home\/linuxbrew\/.linuxbrew\/bi
 # Remove coprs
 dnf5 -y copr remove ublue-os/staging
 dnf5 -y copr remove ublue-os/packages
-<<<<<<< HEAD
-=======
 #dnf5 -y copr remove kylegospo/oversteer
->>>>>>> 4f9a014 (patches to support trunk os)
 
 # Disable Negativo17 Fedora Multimedia
 # This needs to be a whole organiztion change

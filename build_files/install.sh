@@ -90,27 +90,26 @@ cd -
 
 dnf5 versionlock add kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 
-<<<<<<< HEAD
 # use override to replace mesa and others with less crippled versions
-OVERRIDES=(
-    "intel-gmmlib"
-    "intel-mediasdk"
-    "intel-vpl-gpu-rt"
-    "libheif"
-    "libva"
-    "libva-intel-media-driver"
-    "mesa-dri-drivers"
-    "mesa-filesystem"
-    "mesa-libEGL"
-    "mesa-libGL"
-    "mesa-libgbm"
-    "mesa-va-drivers"
-    "mesa-vulkan-drivers"
-)
-
-dnf5 distro-sync --skip-unavailable -y --repo='fedora-multimedia' "${OVERRIDES[@]}"
-dnf5 versionlock add "${OVERRIDES[@]}"
+# OVERRIDES=(
+#     "intel-gmmlib"
+#     "intel-mediasdk"
+#     "intel-vpl-gpu-rt"
+#     "libheif"
+#     "libva"
+#     "libva-intel-media-driver"
+#     "mesa-dri-drivers"
+#     "mesa-filesystem"
+#     "mesa-libEGL"
+#     "mesa-libGL"
+#     "mesa-libgbm"
+#     "mesa-va-drivers"
+#     "mesa-vulkan-drivers"
+# )
 #
+# dnf5 distro-sync --skip-unavailable -y --repo='fedora-multimedia' "${OVERRIDES[@]}"
+# dnf5 versionlock add "${OVERRIDES[@]}"
+# #
 # # Disable DKMS support in gnome-software
 # if [[ "$IMAGE_NAME" == "silverblue" ]]; then
 #     dnf5 remove -y \
