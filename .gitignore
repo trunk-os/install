@@ -1,5 +1,6 @@
 .idea
 *.iso
 *.iso-CHECKSUM*
+*.ova
 /disk.*
 /extra*.*
